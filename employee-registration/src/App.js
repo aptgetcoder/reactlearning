@@ -14,15 +14,12 @@ class App extends React.Component {
 
   addEmployee = employee => {
 		if(employee.empId){
-			axios.post("http://34.238.84.206:33535/employeeDetails/save", {
-        empId: employee.empId,
-        empName: employee.empName,
-        emailId: employee.emailId,
-        mobileNo: employee.mobileNo
-      }, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }}).then(response => {
+			axios.get('http://34.238.84.206:33535/employeeDetails/save/+{
+				  "empId":' + employee.empId +', 
+				  "empName":'+ employee.empName +', 
+				  "emailId":'+ employee.emailId +', 
+				  "mobileNo":'+ employee.mobileNo +}'
+      		}}).then(response => {
 				this.setState({
 					employees: [...this.state.employees, employee]
 				});
